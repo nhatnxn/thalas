@@ -1,0 +1,166 @@
+openapi: 3.0.1
+info:
+  title: Thalas AI APIs
+  version: 0.0.1
+servers:
+- url: /
+paths:
+  /health:
+    get:
+      operationId: health_check
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: OK
+                x-content-type: text/plain
+      x-openapi-router-controller: swagger_server.controllers.default_controller
+  /thalas:
+    post:
+      description: Detect the thalas
+      operationId: detect_by_thalas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/param'
+      responses:
+        "200":
+          description: Detection the thalas gen sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/classnames'
+      x-openapi-router-controller: swagger_server.controllers.default_controller
+  /detect:
+    post:
+      description: Detect values in table
+      operationId: detect
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_detect'
+      responses:
+        "200":
+          description: Detect values in table
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/value'
+      x-openapi-router-controller: swagger_server.controllers.default_controller
+components:
+  schemas:
+    classnames:
+      type: object
+      properties:
+        classnames:
+          type: string
+      example:
+        classnames: classnames
+    body_detect:
+      type: object
+      properties:
+        imageUrl:
+          type: string
+        corners:
+          type: array
+          items:
+            $ref: '#/components/schemas/point'
+    key_value:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: number
+          format: double
+      example:
+        value: 0.8008281904610115
+        key: key
+    value:
+      type: object
+      properties:
+        parameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/key_value'
+        corners:
+          type: array
+          items:
+            $ref: '#/components/schemas/point'
+        error_code:
+          type: string
+          enum:
+            - BADIMAGE
+            - NEEDCROP
+      example:
+        corners:
+        - x: 0.8008281904610115
+          y: 6.027456183070403
+        - x: 0.8008281904610115
+          y: 6.027456183070403
+    point:
+      type: object
+      properties:
+        x:
+          type: number
+          format: double
+        y:
+          type: number
+          format: double
+      example:
+        x: 0.8008281904610115
+        y: 6.027456183070403
+    param:
+      type: object
+      properties:
+        SLHC:
+          type: number
+          format: double
+        HST:
+          type: number
+          format: double
+        HCT:
+          type: number
+          format: double
+        MCV:
+          type: number
+          format: double
+        MCH:
+          type: number
+          format: double
+        MCHC:
+          type: number
+          format: double
+        RDWCV:
+          type: number
+          format: double
+        SLTC:
+          type: number
+          format: double
+        SLBC:
+          type: number
+          format: double
+        FERRITIN:
+          type: number
+          format: double
+        FE:
+          type: number
+          format: double
+        HBA1:
+          type: number
+          format: double
+        HBA2:
+          type: number
+          format: double
+        MODE:
+          type: string
+          enum:
+          - 9PARAMS
+          - 11PARAMS
+          - 13PARAMS
+

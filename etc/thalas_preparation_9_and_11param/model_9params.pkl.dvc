@@ -1,0 +1,4 @@
+outs:
+- md5: 131ab6bcfe4750e80892511c77c12de6
+  size: 241270
+  path: model_9params.pkl

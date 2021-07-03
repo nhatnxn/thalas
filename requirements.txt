@@ -1,0 +1,20 @@
+connexion == 2.6.0
+numpy==1.19.5
+setuptools >= 21.0.0
+Flask==1.1.1
+scikit-learn==0.24.1
+pandas==1.2.3
+openpyxl==3.0.7
+xlrd==2.0.1
+einops==0.2.0
+gdown==3.11.0
+Flask==1.1.1
+opencv-python==4.2.0.32
+neuraxle==0.3.3
+onnxruntime==1.7.0
+vietocr==0.3.5
+paddleocr==2.0.6
+paddlepaddle==2.0.2
+xgboost==1.4.2
+paddleseg==2.1.0
+lightgbm==3.2.1

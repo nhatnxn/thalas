@@ -1,0 +1,5 @@
+outs:
+- md5: c1ffeba410072a2af809385fd1b8a209.dir
+  path: ocr
+  size: 89461615
+  nfiles: 3

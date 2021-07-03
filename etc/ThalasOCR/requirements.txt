@@ -1,0 +1,8 @@
+openpyxl
+xlrd
+einops
+gdown
+draw_bounding_box
+difflib
+paddlepaddle
+paddleocr
